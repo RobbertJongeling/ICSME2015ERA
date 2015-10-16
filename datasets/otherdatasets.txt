@@ -1,0 +1,6 @@
+gnome bugzilla: 
+dropproxy.com/f/BF1
+
+jira:
+dropproxy.com/f/BF2
+
