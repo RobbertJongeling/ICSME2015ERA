@@ -1,0 +1,31 @@
+Figure 2: Proportion of positive, neutral and negative commit comments per project.
+
+For projects Jquery, Rails, CraftBukkit, Diaspora, MaNGOS and TrinityCore:
+
+absolute numbers:
+				pos		neu		neg		total
+Jquery			531		511		1119	2161	
+Rails			2765	2212	3869	8846
+CraftBukkit		795		662		1936	3393
+Diaspora		369		405		726		1500
+MaNGOS			1172	1091	1699	3962
+TrinityCore		3071	4467	4755	12293
+
+query
+SELECT avg(sentimentscore) from commit_comments_nltk where comment_id in (select comment_id FROM commit_comments where commit_id in (select commit_id from project_commits where project_id = ) )
+
+project ids
+Jquery	25875
+Rails	78852
+CraftBukkit	22980
+Diaspora	91331
+MaNGOS	289
+TrinityCore	12
+
+average sentiment score per project
+Jquery			-1.635117349959267
+Rails			-1.0360614160450512
+CraftBukkit		-1.9381238605388964
+Diaspora		-1.4846617996560403
+MaNGOS			-1.029718908021146
+TrinityCore		-0.9814528564998402

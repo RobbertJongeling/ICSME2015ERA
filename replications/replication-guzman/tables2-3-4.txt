@@ -1,0 +1,77 @@
+sentimentscore = 1-neg if neg, 0.5 if neutral, pos if pos
+
+SELECT `commit_comments`.`language`, count(commit_comments.comment_id), avg(sentimentscore), std(sentimentscore) FROM `commit_comments_nltk` JOIN `commit_comments` ON `commit_comments_nltk`.`comment_id`=`commit_comments`.`comment_id` GROUP BY `commit_comments`.`language`
+
+Table 2: Emotion score average grouped by program-
+ming language.
+Language Commits Mean Stand. Dev.
+
+C	6271	0.43716134909311927	0.13804173303055425
+C++	16978	0.47381538147924496	0.1319047814173714
+Java	4714	0.4401649695199004	0.1396599221350756
+Python	2134	0.44557121766655483	0.13772927213308384
+Ruby	15353	0.464194000271563	0.1389478396922034
+
+SELECT `commit_comments`.`day_of_week`, count(commit_comments.comment_id), avg(sentimentscore), std(sentimentscore) FROM `commit_comments_nltk` JOIN `commit_comments` ON `commit_comments_nltk`.`comment_id`=`commit_comments`.`comment_id` GROUP BY `commit_comments`.`day_of_week`
+
+Table 3: Emotion score average of commit comments
+grouped by weekday.
+Weekday		Commits	Mean Stand.	Dev.
+Friday	9153	0.459979007300724	0.13676723556081655
+Monday	9532	0.46071292100503003	0.13481795262939672
+Saturday	6720	0.45838833437536014	0.136968026553087
+Sunday	6540	0.457242061272396	0.13799405207729049
+Thursday	9560	0.4601654215270912	0.13685291152512716
+Tuesday	9385	0.45981093280781493	0.1369816943568403
+Wednesday	9744	0.4588954734867446	0.13790787066937935
+
+
+SELECT `commit_comments`.`time_of_day`, count(commit_comments.comment_id), avg(sentimentscore), std(sentimentscore) FROM `commit_comments_nltk` JOIN `commit_comments` ON `commit_comments_nltk`.`comment_id`=`commit_comments`.`comment_id` GROUP BY `commit_comments`.`time_of_day`
+
+Table 4: Emotion score average of commit comments
+grouped by time of the day.
+afternoon	19852	0.4603650362964397	0.13618435880736796
+evening	16629	0.46126726845790694	0.13689823638360385
+morning	12744	0.4570395045473855	0.1365678478406939
+night	11409	0.4579129703503584	0.13820362542212175
+
+
+
+
+
+new idea: sentimentscore = ((((`neg`-0.5)*-6)-2)*1.5) if neg, 0 if neu, (((`pos`-0.5)*6)+2) if pos
+
+SELECT `commit_comments`.`language`, count(commit_comments.comment_id), avg(sentimentscore), std(sentimentscore) FROM `commit_comments_nltk` JOIN `commit_comments` ON `commit_comments_nltk`.`comment_id`=`commit_comments`.`comment_id` GROUP BY `commit_comments`.`language`
+
+Table 2: Emotion score average grouped by program-
+ming language.
+Language Commits Mean Stand. Dev.
+C & 6271 & -1.8328280312066463 & 3.094477159166817
+C++ & 16978 & -1.0166696908866155 & 2.958990073287642
+Java & 4714 & -1.7545334076458685 & 3.105565178131018
+Python & 2134 & -1.6345418982970543 & 3.0794960394338906
+Ruby & 15353 & -1.2427603698023577 & 3.1170527236164687
+
+SELECT `commit_comments`.`day_of_week`, count(commit_comments.comment_id), avg(sentimentscore), std(sentimentscore) FROM `commit_comments_nltk` JOIN `commit_comments` ON `commit_comments_nltk`.`comment_id`=`commit_comments`.`comment_id` GROUP BY `commit_comments`.`day_of_week`
+
+Table 3: Emotion score average of commit comments
+grouped by weekday.
+Weekday		Commits	Mean Stand.	Dev.
+Monday & 9532 & -1.3163122485628873 & 3.0468072721672055
+Tuesday & 9385 & -1.3423401687256478 & 3.078990592079877
+Wednesday & 9744 & -1.370031304406154 & 3.099733473068693
+Thursday & 9560 & -1.3581277770482882 & 3.072522926283288
+Friday & 9153 & -1.3472564543214196 & 3.0824966496571227
+Saturday & 6720 & -1.3265880789173479 & 3.0659357645049936
+Sunday & 6540 & -1.3820756739923012 & 3.0809811207044886
+
+
+SELECT `commit_comments`.`time_of_day`, count(commit_comments.comment_id), avg(sentimentscore), std(sentimentscore) FROM `commit_comments_nltk` JOIN `commit_comments` ON `commit_comments_nltk`.`comment_id`=`commit_comments`.`comment_id` GROUP BY `commit_comments`.`time_of_day`
+
+Table 4: Emotion score average of commit comments
+grouped by time of the day.
+morning & 12744 & -1.3972692387394903 & 3.0620527781293077
+afternoon & 19852 & -1.3267825850517425 & 3.075716118304126
+evening & 16629 & -1.3230837437818155 & 3.0847529001528264
+night & 11409 & -1.368698037326108 & 3.076631459663942
+

@@ -1,0 +1,36 @@
+table 1: number of security related comments and discussions
+							comments		discussions
+commits			security	2567 (4.23%)	1761 (9.58%)
+				total		60658			18378
+pull-requests	security	1790 (3.25%)	1105 (11.51%)
+				total		54892 			9601 
+				
+				
+table 2: commits sentiment analysis statistics - numbers (note, undetermined left out)
+							Negative	Neutral		Positive
+discussions		security	521			746			477
+				rest		4003		7319		5279
+comments		security	810			1199		558
+				rest		12950		29647		15485
+			
+table 2: commits sentiment analysis statistics - percentages (note, undetermined left out)
+							Negative	Neutral		Positive
+discussions		security	29.59%		42.36%		27.09%
+				rest		24.09%		44.05%		31.77%
+comments		security	31.55%		46.71%		21.74%
+				rest		22.29%		51.04%		26.66%
+			
+				
+table 3: pull requests sentiment analysis statistics - numbers (note, undetermined left out)
+							Negative	Neutral		Positive
+discussions		security	328			505			262
+				rest		2044		4361		2085
+comments		security	440			918			431
+				rest		9579		33631		9892
+				
+table 3: pull requests sentiment analysis statistics - percentages (note, undetermined left out)
+							Negative	Neutral		Positive
+discussions		security	29.68%		45.70%		23.71%
+				rest		24.06%		51.33%		24.54%
+comments		security	24.58%		51.28%		21.08%
+				rest		18.10%		64.12%		18.69%

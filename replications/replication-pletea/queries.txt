@@ -1,0 +1,5 @@
+SET SESSION group_concat_max_len = 65535;
+INSERT INTO commit_discussions (SELECT `commit_id`, group_concat(`body` separator '. ') FROM `commit_comments` GROUP BY `commit_id`)
+
+SET SESSION group_concat_max_len = 65535;
+INSERT INTO pull_request_discussions (SELECT `pull_request_id`, group_concat(`body` separator '. ') FROM `pull_request_comments` GROUP BY `pull_request_id`)

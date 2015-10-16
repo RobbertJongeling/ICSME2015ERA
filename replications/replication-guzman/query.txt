@@ -1,0 +1,8 @@
+selecting all projects with more than 200 comments
+
+insert into `projects_with_more_than_200_comments` (select pid, sc from (select pid, sum(c) as sc from (select project_commits.project_id as pid, project_commits.commit_id as cid, (select count(comment_id) from commit_comments where commit_comments.commit_id = project_commits.commit_id) as c from project_commits) as q group by pid) as qq where qq.sc > 200)
+
+
+select all comments associated with those projects
+
+select comment_id, body from commit_comments where commit_id in (SELECT commit_id from project_commits where project_id in (select project_id from projects_with_more_than_200_comments))
